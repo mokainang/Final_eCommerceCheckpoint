@@ -1,0 +1,5 @@
+/frontend-two/node_modules
+/frontend-two/.env
+/backend/node_modules
+/backend/.env
+/frontend-not-used
