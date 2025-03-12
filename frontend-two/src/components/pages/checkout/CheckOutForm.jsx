@@ -1,8 +1,13 @@
 "use client";
+import dynamic from "next/dynamic";
 import { redirect, useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import PaymentWithPaystack from "./PaymentWithPaystack";
+//import PaymentWithPaystack from "./PaymentWithPaystack";
+
+const PaystackDynamic = dynamic(() => import("./PaymentWithPaystack"), {
+  ssr: false,
+});
 
 const CheckOutForm = () => {
   const { totalCost } = useSelector((state) => state.cart);
@@ -49,7 +54,7 @@ const CheckOutForm = () => {
         placeholder="Delivery Address"
         className="p-2 w-full border border-amber-500 rounded-md focus:outline focus:outline-amber-800"
       />
-      <PaymentWithPaystack customerDetails={customerDetails} />
+      <PaystackDynamic customerDetails={customerDetails} />
     </form>
   );
 };
