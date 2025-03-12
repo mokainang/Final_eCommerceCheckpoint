@@ -8,5 +8,5 @@ export function formatCurrency(amount) {
 
 export const SERVER_URL =
   process.env.NODE_ENV === "production"
-    ? "https://ecommerce-backend-b1pk.onrender.com/"
+    ? "https://ecommerce-backend-b1pk.onrender.com"
     : "http://localhost:3001";
