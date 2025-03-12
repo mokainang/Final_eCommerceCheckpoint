@@ -8,7 +8,7 @@ import { CONNECT_DATABASE } from "./config/database.js";
 
 dotenv.config(); // this is to execute the dotenv
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 // the following is an application level middleware that allows application to communicate with our backend
 // it must come before any request
 app.use(cors());
