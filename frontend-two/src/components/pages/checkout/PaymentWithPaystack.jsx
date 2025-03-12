@@ -4,6 +4,7 @@ import { usePaystackPayment } from "react-paystack";
 import validator from "validator";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { SERVER_URL } from "@/utils/helper";
 
 const PaymentWithPaystack = ({ customerDetails }) => {
   const { totalCost, cartItems } = useSelector((state) => state.cart);
@@ -25,15 +26,12 @@ const PaymentWithPaystack = ({ customerDetails }) => {
     console.log("Customer Details: ", customerDetails);
 
     try {
-      const res = await axios.post(
-        "http://localhost:3001/api/v1/order/create",
-        {
-          reference: reference,
-          totalCost: totalCost,
-          cartItems: cartItems,
-          customerDetails: customerDetails,
-        }
-      );
+      const res = await axios.post(`${SERVER_URL}/api/v1/order/create`, {
+        reference: reference,
+        totalCost: totalCost,
+        cartItems: cartItems,
+        customerDetails: customerDetails,
+      });
       console.log(res);
       alert("Thanks you order has been placed successfully");
       router.push("/"); // this is to direct to the homepage
